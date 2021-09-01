@@ -1,9 +1,11 @@
 import Header from "./components/Header";
-import Main from "./components/Main";
+import Main from "./components/main/Main";
 import Sessions from "./components/Sessions";
 import Spots from "./components/Spots";
 import Footer from "./components/Footer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+const API_URL =
+  "https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies";
 
 export default function App() {
   return (
@@ -11,7 +13,7 @@ export default function App() {
       <Header></Header>
       <Switch>
         <Route path="/" exact>
-          <Main></Main>
+          <Main apiURL={API_URL}></Main>
         </Route>
         <Route path="/sesssions" exact>
           <Sessions></Sessions>

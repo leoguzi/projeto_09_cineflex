@@ -1,3 +1,16 @@
-p {
-  margin-top: 67px;
+main {
+  font-family: "Roboto", sans-serif;
+  margin-top: 100px;
+}
+
+main h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.thumbs-container {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
