@@ -1,0 +1,18 @@
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 67px;
+  background-color: #c3cfd9;
+  color: #e8833a;
+  font-size: 34px;
+}
