@@ -4,8 +4,6 @@ import Sessions from "./components/Sessions";
 import Spots from "./components/Spots";
 import Footer from "./components/Footer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-const API_URL =
-  "https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies";
 
 export default function App() {
   return (
@@ -13,9 +11,9 @@ export default function App() {
       <Header></Header>
       <Switch>
         <Route path="/" exact>
-          <Main apiURL={API_URL}></Main>
+          <Main></Main>
         </Route>
-        <Route path="/sesssions" exact>
+        <Route path="/sessions" exact>
           <Sessions></Sessions>
         </Route>
         <Route path="/assentos" exact>
