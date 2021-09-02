@@ -1,4 +1,4 @@
-import "./styles/card.css";
+import "./card.css";
 export default function Card({ posterURL, title }) {
   return (
     <div className="card">

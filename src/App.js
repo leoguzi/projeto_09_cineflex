@@ -1,8 +1,8 @@
 import Header from "./Header";
-import Main from "./Main";
-import Sessions from "./Sessions";
+import Main from "./main/Main";
+import Sessions from "./sessions/Sessions";
 import Spots from "./Spots";
-import Footer from "./Footer";
+
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -20,7 +20,6 @@ export default function App() {
           <Spots></Spots>
         </Route>
       </Switch>
-      {/*<Footer></Footer>*/}
     </BrowserRouter>
   );
 }

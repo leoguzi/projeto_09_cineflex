@@ -1,6 +1,6 @@
 import axios from "axios";
 const URL =
-  "https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies";
+  "https://mock-api.bootcamp.respondeai.com.br/api/v3/cineflex/movies";
 
 export const getMovies = () => axios.get(URL);
 
