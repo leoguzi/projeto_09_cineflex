@@ -1,8 +1,8 @@
-import Header from "./components/Header";
-import Main from "./components/main/Main";
-import Sessions from "./components/Sessions";
-import Spots from "./components/Spots";
-import Footer from "./components/Footer";
+import Header from "./Header";
+import Main from "./Main";
+import Sessions from "./Sessions";
+import Spots from "./Spots";
+import Footer from "./Footer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -13,10 +13,10 @@ export default function App() {
         <Route path="/" exact>
           <Main></Main>
         </Route>
-        <Route path="/sessions" exact>
+        <Route path="/sessions/:movieID" exact>
           <Sessions></Sessions>
         </Route>
-        <Route path="/assentos" exact>
+        <Route path="/spots" exact>
           <Spots></Spots>
         </Route>
       </Switch>

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "../styles/sessions.css";
-import { getSessions } from "../api";
+import "./styles/sessions.css";
+import { getSessions } from "./api";
 export default function Sessions() {
+  const { movieID } = useParams();
   const [sessions, setSessions] = useState({});
-  //const params = useParams();
-  useEffect(() => {
-    getSessions(2).then((response) => setSessions(response.data));
-  }, []);
 
-  console.log(sessions);
+  useEffect(
+    () => getSessions(movieID).then((response) => setSessions(response.data)),
+    []
+  );
 
   return (
     <div className="sessions-container">

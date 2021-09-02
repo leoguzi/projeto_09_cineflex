@@ -1,13 +1,13 @@
-import "../../styles/main.css";
+import "./styles/main.css";
 import Card from "./Card";
-import { getMovies } from "../../api";
+import { getMovies } from "./api";
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Main() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    getMovies(1).then((response) => setMovies(response.data));
+    getMovies().then((response) => setMovies(response.data));
   }, []);
   return (
     <main>
