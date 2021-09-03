@@ -15,7 +15,7 @@ export default function Main() {
       <div className="thumbs-container">
         {movies.map((movie, index) => (
           <Link key={index} to={`/sessions/${movie.id}`}>
-            <Card posterURL={movie.posterURL} title={movie.title}></Card>
+            <Card posterURL={movie.posterURL} title={movie.title} />
           </Link>
         ))}
       </div>

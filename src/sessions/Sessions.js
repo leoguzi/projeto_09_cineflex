@@ -28,7 +28,7 @@ export default function Sessions() {
             </h2>
             <div className="showtimes-container">
               {day.showtimes.map((time, index) => (
-                <Link key={index} to={`/spots/${time.id}`}>
+                <Link key={index} to={`/seats/${time.id}`}>
                   <div className="time">{time.name}</div>
                 </Link>
               ))}

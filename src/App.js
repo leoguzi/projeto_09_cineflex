@@ -1,23 +1,23 @@
-import Header from "./Header";
+import Header from "./header/Header";
 import Main from "./main/Main";
 import Sessions from "./sessions/Sessions";
-import Spots from "./Spots";
+import Seats from "./seats/SeatsSelection";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Header></Header>
+      <Header />
       <Switch>
         <Route path="/" exact>
-          <Main></Main>
+          <Main />
         </Route>
         <Route path="/sessions/:movieID" exact>
-          <Sessions></Sessions>
+          <Sessions />
         </Route>
-        <Route path="/spots" exact>
-          <Spots></Spots>
+        <Route path="/seats/:sessionID" exact>
+          <Seats />
         </Route>
       </Switch>
     </BrowserRouter>
