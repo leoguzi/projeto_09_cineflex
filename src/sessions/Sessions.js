@@ -18,23 +18,25 @@ export default function Sessions() {
     []
   );
   return (
-    <div className="sessions-container">
-      <h1>Selecione o horário</h1>
-      {sessions.map((day, index) => (
-        <div key={index}>
-          <h2>
-            {day.weekday} - {day.date}
-          </h2>
-          <div className="showtimes-container">
-            {day.showtimes.map((time, index) => (
-              <Link key={index} to={`/spots/${time.id}`}>
-                <div className="time">{time.name}</div>
-              </Link>
-            ))}
+    <>
+      <div className="sessions-container">
+        <h1>Selecione o horário</h1>
+        {sessions.map((day, index) => (
+          <div key={index}>
+            <h2>
+              {day.weekday} - {day.date}
+            </h2>
+            <div className="showtimes-container">
+              {day.showtimes.map((time, index) => (
+                <Link key={index} to={`/spots/${time.id}`}>
+                  <div className="time">{time.name}</div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
       <Footer title={title} posterURL={posterURL} />
-    </div>
+    </>
   );
 }
