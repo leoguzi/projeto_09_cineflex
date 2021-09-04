@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Main() {
   const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    getMovies().then((response) => setMovies(response.data));
-  }, []);
+  useEffect(() => getMovies().then((response) => setMovies(response.data)), []);
   return (
     <main>
       <h1>Selecione o filme</h1>

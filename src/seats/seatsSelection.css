@@ -1,5 +1,6 @@
 .seats-page-container {
   display: flex;
+  align-items: center;
   flex-direction: column;
   margin: 0 15px 0 15px;
   margin-bottom: 117px;
@@ -18,6 +19,7 @@
 }
 
 .info-container {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   color: #4e5a65;
@@ -30,6 +32,7 @@
 }
 
 .buyer-form-field {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -53,10 +56,9 @@
 .checkout {
   width: 225px;
   height: 42px;
-  margin: 20px auto 20px auto;
+  margin: 20px 0 20px 0;
   background-color: #e8833a;
   color: #ffffff;
-  align-self: center;
   border: 0;
   border-radius: 3px;
   font-size: 18px;
