@@ -4,20 +4,29 @@ import Footer from "../footer/Footer";
 import Seat from "./Seat";
 import Info from "./Info";
 import "./seatsSelection.css";
-import { getSeats } from "../api";
+import { getSeats, validCpf } from "../api";
 
-export default function SeatsSelection({ updateOrder }) {
+export default function SeatsSelection({ finishOrder }) {
   const { sessionID } = useParams();
   const [sessionInfo, setSessionInfo] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
-  let isChekoutReady = name && cpf && selectedSeats.length > 0;
+  let isChekoutReady = name && validCpf(cpf) && selectedSeats.length > 0;
   function updateSelectedSeats(seat) {
-    selectedSeats.includes(seat)
-      ? setSelectedSeats(selectedSeats.filter((selected) => selected !== seat))
-      : setSelectedSeats([...selectedSeats, seat]);
+    if (selectedSeats.length === 0) {
+      setSelectedSeats([...selectedSeats, seat]);
+    } else {
+      selectedSeats.map((selectedSeat) =>
+        selectedSeat.id === seat.id
+          ? setSelectedSeats(
+              selectedSeats.filter((selected) => selected.id !== seat.id)
+            )
+          : setSelectedSeats([...selectedSeats, seat])
+      );
+    }
   }
+
   useEffect(
     () => getSeats(sessionID).then((re) => setSessionInfo(re.data)),
     []
@@ -35,7 +44,10 @@ export default function SeatsSelection({ updateOrder }) {
                 id={seat.id}
                 isAvailable={seat.isAvailable}
                 name={seat.name}
-                isSelected={selectedSeats.includes(seat.id)}
+                isSelected={selectedSeats.some(
+                  //tests if this id exists in at least one object from the list of selected seats
+                  (selectedSeat) => selectedSeat.id === seat.id
+                )}
                 updateSelectedSeats={updateSelectedSeats}
               />
             ))
@@ -64,13 +76,15 @@ export default function SeatsSelection({ updateOrder }) {
           <button
             className="checkout"
             onClick={() =>
-              updateOrder({
-                movie: sessionInfo.movie.title,
-                session: sessionInfo.day.weekday + " " + sessionInfo.name,
-                seats: selectedSeats,
-                buyer: name,
-                cpf: cpf,
-              })
+              isChekoutReady
+                ? finishOrder({
+                    movie: sessionInfo.movie.title,
+                    session: sessionInfo.day.weekday + " " + sessionInfo.name,
+                    seats: selectedSeats,
+                    buyer: name,
+                    cpf: cpf,
+                  })
+                : alert("Verifique os dados do pedido.")
             }
           >
             Reservar Assento(s)

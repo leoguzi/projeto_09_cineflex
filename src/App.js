@@ -3,22 +3,19 @@ import Main from "./main/Main";
 import Sessions from "./sessions/SessionsSelection";
 import SeatsSelection from "./seats/SeatsSelection";
 import Sucess from "./sucess/Sucess";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
+import { postOrder } from "./api";
 
 export default function App() {
-  const orderTeamplate = {
-    movie: "",
-    session: "",
-    seats: [],
-    buyer: "",
-    cpf: "",
-  };
-  const [order, setOrder] = useState(orderTeamplate);
-  function updateOrder(order) {
-    console.log(order);
+  const [order, setOrder] = useState({});
+  function finishOrder(order) {
     setOrder(order);
-    return <Redirect to="/sucess" />;
+    postOrder({
+      ids: order.seats.map((seat) => seat.id),
+      name: order.buyer,
+      cpf: order.cpf,
+    });
   }
   return (
     <BrowserRouter>
@@ -31,7 +28,7 @@ export default function App() {
           <Sessions />
         </Route>
         <Route path="/seats/:sessionID" exact>
-          <SeatsSelection updateOrder={updateOrder} />
+          <SeatsSelection finishOrder={finishOrder} />
         </Route>
         <Route path="/sucess">
           <Sucess order={order} />

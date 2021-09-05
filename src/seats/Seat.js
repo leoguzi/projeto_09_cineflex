@@ -16,7 +16,11 @@ export default function Seat({
     <div
       id={id}
       className={style}
-      onClick={() => (isAvailable ? updateSelectedSeats(id) : null)}
+      onClick={() =>
+        isAvailable
+          ? updateSelectedSeats({ id: id, number: name })
+          : alert("Esse assento não está disponível!")
+      }
     >
       <spam>{name}</spam>
     </div>
