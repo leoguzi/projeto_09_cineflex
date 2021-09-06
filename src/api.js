@@ -10,9 +10,10 @@ export const getSeats = (sessionID) =>
   axios.get(URL + "showtimes/" + sessionID + "/seats");
 
 export const postOrder = (order) => {
-  /*  axios
+  console.log(order);
+  axios
     .post(URL + "seats/book-many", order)
-    .catch((error) => console.log(error)); */
+    .catch((error) => console.log(error));
 };
 
 export function validCpf(cpf) {

@@ -30,14 +30,21 @@
 .back-to-home {
   width: 225px;
   height: 42px;
-  margin: 20px 0 20px 0;
+  margin: 10px 0 40px 0;
   background-color: #e8833a;
   color: #ffffff;
   border: 0;
   border-radius: 3px;
   font-size: 18px;
+  align-self: center;
 }
 
 .sucess-container a {
   align-self: center;
+}
+
+.sucess-container div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
 }

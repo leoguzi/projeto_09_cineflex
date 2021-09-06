@@ -11,11 +11,20 @@ export default function App() {
   const [order, setOrder] = useState({});
   function finishOrder(order) {
     setOrder(order);
-    postOrder({
+    const postObject = {
       ids: order.seats.map((seat) => seat.id),
-      name: order.buyer,
-      cpf: order.cpf,
-    });
+      compradores: [
+        order.seats.map((seat) => ({
+          idAssento: seat.id,
+          nome: seat.buyer,
+          cpf: seat.cpf,
+        })),
+      ],
+    };
+    postOrder(postObject);
+  }
+  function clearOrder() {
+    setOrder({});
   }
   return (
     <BrowserRouter>
@@ -31,7 +40,7 @@ export default function App() {
           <SeatsSelection finishOrder={finishOrder} />
         </Route>
         <Route path="/sucess">
-          <Sucess order={order} />
+          <Sucess order={order} clearOrder={clearOrder} />
         </Route>
       </Switch>
     </BrowserRouter>

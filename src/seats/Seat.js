@@ -12,16 +12,20 @@ export default function Seat({
   } else {
     isAvailable ? (style = "seat") : (style = "seat occupied");
   }
+
+  function handleSeatClick() {
+    isAvailable
+      ? updateSelectedSeats({
+          id: id,
+          number: name,
+          buyer: "",
+          cpf: "",
+        })
+      : alert("Esse assento não está disponível!");
+  }
+
   return (
-    <div
-      id={id}
-      className={style}
-      onClick={() =>
-        isAvailable
-          ? updateSelectedSeats({ id: id, number: name })
-          : alert("Esse assento não está disponível!")
-      }
-    >
+    <div id={id} className={style} onClick={() => handleSeatClick()}>
       <spam>{name}</spam>
     </div>
   );
