@@ -11,10 +11,12 @@ export default function SeatsSelection({ finishOrder }) {
   const [sessionInfo, setSessionInfo] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
   const history = useHistory();
+
   useEffect(
     () => getSeats(sessionID).then((re) => setSessionInfo(re.data)),
     []
   );
+
   function updateSelectedSeats(seat) {
     let deletionConfirmation = false;
     let exists = false;
